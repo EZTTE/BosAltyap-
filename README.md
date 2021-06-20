@@ -1,2 +1,0 @@
-# Botlistaltyap-
-Çalmayın VAlla Küserim :(

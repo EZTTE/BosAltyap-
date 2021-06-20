@@ -16,10 +16,9 @@ module.exports = client => {
   );
   client.user.setStatus("online");
   var oyun = [
-    "d!bot-ekle",
-    "Eklenen Botları"
+    "DEĞİŞEN",
+    "OYNUYOR"
   ];
-//PLAYING Oynuyor //WATCHING İzliyor
   setInterval(function() {
     var random = Math.floor(Math.random() * (oyun.length - 0 + 1) + 0);
 

@@ -1,16 +1,3 @@
-const express = require("express");
-const app = express();
-const http = require("http");
-app.get("/", (request, response) => {
-  console.log(
-    `Az Önce Bot Ping yedi, Sorun önemli değil merak etme. Hatayı düzelttik.`
-  );
-  response.sendStatus(200);
-});
-app.listen(process.env.PORT);
-setInterval(() => {
-  http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`);
-}, 280000);
 const Discord = require("discord.js");
 const db = require('quick.db')
 const client = new Discord.Client();
@@ -118,23 +105,3 @@ client.on("error", e => {
 });
 
 client.login(ayarlar.token);
-
-//--------------------------------KOMUTLAR-------------------------------\\
-client.on('guildMemberAdd', member => {
-  member.roles.add("760819095834329088")
-})
-////
-client.on("guildMemberAdd", async (member, message) => {
-  let rol = db.fetch(`otorol_${member.guild.id}`);
-  let kanal = db.fetch(`otorollog_${member.guild.id}`);
-
-  if (!rol) return;
-  if (member.user.bot) {}
-  member.roles.add(rol);
-  const mesaj = new Discord.MessageEmbed()
-    .setAuthor(client.user.username, client.user.avatarURL())
-    .setDescription(
-      `${member} Adlı Kullanıcıya Başarılyla <@&${rol}> Rolu Verildi<a:onays:791202090235199499>`
-    );
-  client.channels.cache.get(kanal).send(mesaj);
-});
